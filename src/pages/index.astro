@@ -1,18 +1,19 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import TechStack from "../components/TechStack.astro";
-import AboutMe from "../components/AboutMe.astro";
-import ProjectContainer from "../components/ProjectContainer.astro";
-import RichPressence from "../components/RichPressence.astro";
-import { Steam, Github } from "../components/Icons"
+import TechStack from "@components/TechStack.astro";
+import AboutMe from "@components/AboutMe.astro";
+import ProjectContainer from "@components/ProjectContainer.astro";
+import RichPressence from "@components/RichPressence.astro";
+import SeparatorLine from "@components/SeparatorLine.astro";
+import { Steam, Github } from "@components/Icons"
 ---
 
 <Layout title="Fabricio F.">
-  <div class="flex flex-col justify-between col-span-2">
+  <div class="flex flex-col justify-between w-full">
     <section>
         <ProjectContainer/>
     </section>
-    <section class="flex flex-row justify-between items-center">
+    <section class="flex flex-col lg:flex-row justify-center lg:justify-between items-center gap-5">
       <RichPressence/>
         <ul class="flex flex-row gap-5">
             <li>
@@ -28,7 +29,8 @@ import { Steam, Github } from "../components/Icons"
         </ul>
     </section>
   </div>
-  <section class="flex flex-col justify-center">
+  <section class="flex flex-col justify-center w-full lg:w-2/4">
+    <SeparatorLine/>
     <AboutMe/>
     <TechStack/>
   </section>
