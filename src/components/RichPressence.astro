@@ -1,0 +1,42 @@
+<div class="flex flex-row items-center">
+    <img src="/assets/image.webp" alt="Ouro Kronii Picture" height="72" width="72" class="rounded-full z-10 relative"/>
+    <div class="activity flex flex-row">
+    <diV class="cut-out"></diV>
+    <div class="relative bg-[#181818] px-6 flex items-center rounded-r-[64px] -left-8">
+        <p>I'm not currently doing anything</p>
+    </div>
+</div>
+</div>
+
+<style>
+    img {
+        box-shadow: 3px 0px 4px 0px rgba(0, 0, 0, 0.25);
+        transition: all 1s ease-in-out;
+    }
+
+    img:hover {
+        transform: scale(1.5);
+    }
+
+    .activity {
+        left: -30px;
+        position:relative;
+    }
+
+    .cut-out {
+        width: 78px;
+        height: 78px;
+        position:relative;
+        overflow:hidden;
+    }
+
+    .cut-out::before {
+        content: '';
+        position:absolute;
+        left: -50%;
+        width:100%;
+        height:100%;
+        border-radius:100%;
+        box-shadow: 0 0 0 300px #181818;
+    }
+</style>
