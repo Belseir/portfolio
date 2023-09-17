@@ -1,42 +1,91 @@
+
 <div class="mt-8 lg:mt-0 relative translate-x-[30px] lg:translate-x-[0px] flex flex-row items-center">
     <img src="/assets/image.webp" alt="Ouro Kronii Picture" height="72" width="72" class="rounded-full z-10 relative"/>
     <div class="activity flex flex-row">
     <diV class="cut-out"></diV>
-    <div class="relative bg-[#181818] px-6 flex items-center rounded-r-[64px] -left-8">
-        <p class="text-sm lg:text-base">I'm not currently doing anything</p>
+    <div class="relative bg-[#181818] px-6 flex items-center rounded-r-[64px] -left-8 min-w-[300px]">
+      <div id="rich-pressence" class="flex flex-col">
+      </div>
     </div>
 </div>
 </div>
 
 <style>
-    img {
-        box-shadow: 3px 0px 4px 0px rgba(0, 0, 0, 0.25);
+  img {
+    box-shadow: 3px 0px 4px 0px rgba(0, 0, 0, 0.25);
         transition: all 1s ease-in-out;
-    }
+      }
 
     img:hover {
         transform: scale(1.5);
-    }
-
-    .activity {
+      }
+      
+      .activity {
         transform: translateX(-30px);
         position:relative;
-    }
+      }
 
     .cut-out {
-        width: 78px;
-        height: 78px;
-        position:relative;
-        overflow:hidden;
+      width: 78px;
+      height: 78px;
+      position:relative;
+      overflow:hidden;
     }
-
+    
     .cut-out::before {
-        content: '';
-        position:absolute;
-        left: -50%;
-        width:100%;
-        height:100%;
-        border-radius:100%;
-        box-shadow: 0 0 0 300px #181818;
+      content: '';
+      position:absolute;
+      left: -50%;
+      width:100%;
+      height:100%;
+      border-radius:100%;
+      box-shadow: 0 0 0 300px #181818;
     }
-</style>
+  </style>
+
+  <script>
+    import { Opcodes } from "../types/lanyard"
+    import type { SubscriptionData, User } from "../types/lanyard"
+    
+    const element = document.querySelector("#rich-pressence")
+    const socket = new WebSocket("wss://api.lanyard.rest/socket");
+    const DISCORD_ID = "214253471556173824";
+  
+    let user: User = { id: DISCORD_ID };
+  
+    socket.onmessage = (ev: any) => {
+      const json = JSON.parse(ev.data)
+  
+      switch (json.op) {
+        case Opcodes.Hello: {
+          let data: SubscriptionData = { subscribe_to_id: DISCORD_ID };
+  
+          if (socket.readyState == socket.OPEN)
+            socket.send(JSON.stringify({ op: Opcodes.Initialize, d: data }));
+  
+          setInterval(() => {
+            if (socket.readyState == socket.OPEN)
+              socket.send(JSON.stringify({ op: Opcodes.Heartbeat }));
+          }, json.d.heartbeat_interval);
+  
+          break;
+        }
+  
+        case Opcodes.Event: {
+          user.data = json.d
+  
+          if(element && user.data) {
+            const mainActivity = user.data.activities.pop()
+            element.innerHTML = mainActivity ? 
+              `
+                <p id="rich-pressence-title" class="text-sm lg:text-lg">${mainActivity.name}</p>
+                <p id="rich-pressence-details" class="text-xs lg:text-xs">${mainActivity.details}</p>
+              ` : `
+                <p>I'm not currently doing anything</p>
+              `
+          }
+          break;
+        }
+      }
+    }
+  </script>
