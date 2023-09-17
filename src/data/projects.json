@@ -1,0 +1,26 @@
+[
+  {
+    "name": "Portfolio",
+    "description": "This website",
+    "date": "16/09/2023",
+    "language": "TypeScript & Astro",
+    "url": "https://github.com/Belseir/portfolio",
+    "bulletBackground": "linear-gradient(90deg, rgba(49, 120, 198, 0.50) 0%, rgba(49, 120, 198, 0.50) 25%, rgba(216, 51, 51, 0.50) 50%, rgba(230, 59, 166, 0.50) 75%, rgba(240, 65, 255, 0.50) 100%)"
+  },
+  {
+    "name": "RoundhoundTable/NoteIt",
+    "description": "Reddit-like academic information sharing website",
+    "date": "16/09/2023",
+    "language": "TypeScript & React",
+    "url": "https://github.com/RoundhoundTable/NoteIt",
+    "bulletBackground": "linear-gradient(90deg, rgba(49, 120, 198, 0.50) 0%, rgba(49, 120, 198, 0.50) 50%, rgba(0, 216, 255, 0.50) 50%, rgba(0, 216, 255, 0.50) 100%)"
+  },
+  {
+    "name": "RoundhoundTable/Nat20",
+    "description": "Web application using websockets to play D&D online",
+    "date": "16/09/2023",
+    "language": "TypeScript & NextJS",
+    "url": "https://github.com/RoundhoundTable/nat20",
+    "bulletBackground": "linear-gradient(90deg, rgba(49, 120, 198, 0.50) 0%, rgba(49, 120, 198, 0.50) 50%, rgba(0, 0, 0, 0.50) 50%, rgba(0, 0, 0, 0.50) 100%)"
+  }
+]
