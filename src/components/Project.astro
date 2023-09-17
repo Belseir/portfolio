@@ -1,0 +1,42 @@
+---
+interface Props {
+    name: string;
+    description: string;
+    date: string;
+    language: string;
+    url: string;
+    bulletBackground: string;
+}
+
+const { name, date, description, language, url, bulletBackground } = Astro.props
+---
+
+<a href={url} target="_blank">
+    <div class="bg-[#181818] rounded-2xl px-4 py-4 project">
+        <div class="flex flex-row justify-between items-center">
+            <h2 class="text-base font-bold">{name}</h2>
+            <p class="text-xs text-[#2F2F2F]">{date}</p>
+        </div>
+        <p class="text-xs ml-2">{description}</p>
+        <div class="language flex flex-row justify-end items-center gap-3">
+            <p class="text-xs font-light">{language}</p>
+            <div class="w-[15px] h-[15px] gap-2">
+                <span class="language-bullet z-0 blur-sm" style=`background: ${bulletBackground};`></span>
+                <span class="language-bullet z-10" style=`background: ${bulletBackground};`></span>
+            </div>
+        </div>
+    </div>
+</a>
+
+<style>
+    .project {
+        box-shadow: 0px 4px 5px 1px #111;
+    }
+
+    .language-bullet {
+        position: absolute;
+        height: 15px;
+        width: 15px;
+        border-radius: 100%;
+    }
+</style>
