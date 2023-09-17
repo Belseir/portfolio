@@ -1,7 +1,35 @@
 ---
-import Layout from '../layouts/Layout.astro';
+import Layout from "../layouts/Layout.astro";
+import TechStack from "../components/TechStack.astro";
+import AboutMe from "../components/AboutMe.astro";
+import ProjectContainer from "../components/ProjectContainer.astro";
+import RichPressence from "../components/RichPressence.astro";
+import { Steam, Github } from "../components/Icons"
 ---
 
 <Layout title="Fabricio F.">
-
+  <div class="flex flex-col justify-between col-span-2">
+    <section>
+        <ProjectContainer/>
+    </section>
+    <section class="flex flex-row justify-between items-center">
+      <RichPressence/>
+        <ul class="flex flex-row gap-5">
+            <li>
+              <a href="https://steamcommunity.com/profiles/76561198206542747" aria-label="Steam" target="_blank">
+                <Steam/>
+              </a>
+            </li>
+            <li>
+              <a href="https://github.com/Belseir" aria-label="Github" target="_blank">
+                <Github/>
+              </a>
+            </li>
+        </ul>
+    </section>
+  </div>
+  <section class="flex flex-col justify-center">
+    <AboutMe/>
+    <TechStack/>
+  </section>
 </Layout>
