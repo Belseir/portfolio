@@ -1,0 +1,24 @@
+<div class="hidden top-1/2 -translate-y-1/2 -ml-14 h-5/6 w-[4px] absolute lg:block">
+    <div class="separator-animation bg-[#762369] w-[4px] h-full rounded-full"></div>
+    <div class="separator-animation bg-[#762369] w-[4px] h-full rounded-full blur-sm absolute -translate-y-full"></div>
+</div>
+
+<style>
+    .separator-animation {
+        background: linear-gradient(0deg, rgba(118,35,105,1) 0%, rgba(118,35,105,1) 0%, rgba(205,81,241,1) 10%, rgba(205,81,241,1) 15%, rgba(118,35,105,1) 20%, rgba(118,35,105,1) 100%);
+        background-size: 4px 200%;
+        animation: moving-light 10s ease infinite;
+    }
+
+    @keyframes moving-light {
+
+	0% {
+		background-position: 0% 0%;
+	}
+	100% {
+		background-position: 0% 200%;
+    }
+
+    }
+
+</style>
