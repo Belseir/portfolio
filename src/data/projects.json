@@ -10,7 +10,7 @@
   {
     "name": "RoundhoundTable/NoteIt",
     "description": "Reddit-like academic information sharing website",
-    "date": "16/09/2023",
+    "date": "10/04/2022",
     "language": "TypeScript & React",
     "url": "https://github.com/RoundhoundTable/NoteIt",
     "bulletBackground": "linear-gradient(90deg, rgba(49, 120, 198, 1) 0%, rgba(49, 120, 198, 1) 50%, rgba(0, 216, 255, 1) 50%, rgba(0, 216, 255, 1) 100%)"
@@ -18,7 +18,7 @@
   {
     "name": "RoundhoundTable/Nat20",
     "description": "Web application using websockets to play D&D online",
-    "date": "16/09/2023",
+    "date": "15/08/2022",
     "language": "TypeScript & NextJS",
     "url": "https://github.com/RoundhoundTable/nat20",
     "bulletBackground": "linear-gradient(90deg, rgba(49, 120, 198, 1) 0%, rgba(49, 120, 198, 1) 50%, rgba(0, 0, 0, 1) 50%, rgba(0, 0, 0, 1) 100%)"
