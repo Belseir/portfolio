@@ -5,6 +5,7 @@ import AboutMe from "@components/AboutMe.astro";
 import ProjectContainer from "@components/ProjectContainer.astro";
 import RichPressence from "@components/RichPressence.astro";
 import SeparatorLine from "@components/SeparatorLine.astro";
+import ProfilePicture from "@components/ProfilePicture.astro";
 import { Steam, Github } from "@components/Icons"
 ---
 
@@ -13,9 +14,12 @@ import { Steam, Github } from "@components/Icons"
     <section>
         <ProjectContainer/>
     </section>
-    <section class="flex flex-col lg:flex-row justify-center lg:justify-between items-center gap-5">
-      <RichPressence/>
-        <ul class="flex flex-row gap-5">
+    <section class="mt-8 lg:mt-0 flex flex-col lg:flex-row lg:justify-between items-center gap-5">
+      <div class="flex items-center">
+          <ProfilePicture/>
+          <RichPressence/>
+      </div>
+        <ul class="flex gap-5">
             <li>
               <a href="https://steamcommunity.com/profiles/76561198206542747" aria-label="Steam" target="_blank">
                 <Steam/>
