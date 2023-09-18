@@ -1,25 +1,25 @@
 ---
-import Project  from "@components/Project.astro";
-import projects from "@data/projects.json"
-import type { Project as ProjectType } from "../types/project.ts"
+import Project from "@components/Project.astro";
+import projects from "@data/projects.json";
+import type { Project as ProjectType } from "../types/project.ts";
 ---
 
 <header>
-    <h1 class="font-bold text-2xl">Featured Projects</h1>
+  <h1 class="font-bold text-2xl">Featured Projects</h1>
 </header>
 <ul class="mt-5 grid grid-cols-1 lg:grid-cols-2 gap-5">
-      {
-        projects.map((project: ProjectType) => (
-          <li>
-            <Project
-                name={project.name}
-                url={project.url}
-                description={project.description}
-                date={project.date}
-                language={project.language}
-                bulletBackground={project.bulletBackground}
-                />
-          </li>
-        ))
-      }
+  {
+    projects.map((project: ProjectType) => (
+      <li>
+        <Project
+          name={project.name}
+          url={project.url}
+          description={project.description}
+          date={project.date}
+          language={project.language}
+          bulletBackground={project.bulletBackground}
+        />
+      </li>
+    ))
+  }
 </ul>

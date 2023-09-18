@@ -1,5 +1,7 @@
 <div class="relative flex h-[72px] z-0 -ml-4">
-  <div class="rich-pressence px-6 flex items-center rounded-r-[64px] sm:w-[300px]">
+  <div
+    class="rich-pressence px-6 flex items-center rounded-r-[64px] sm:w-[300px]"
+  >
     <div id="rich-pressence" class="flex flex-col ml-10">
       <p class="text-xs sm:text-sm">I'm not currently doing anything</p>
     </div>
@@ -8,53 +10,62 @@
 
 <style>
   .rich-pressence {
-    background:radial-gradient(circle at 0% 50%,transparent 40px,#181818 40px);
+    background: radial-gradient(
+      circle at 0% 50%,
+      transparent 40px,
+      #181818 40px
+    );
   }
 </style>
 
-  <script>
-    import { Opcodes } from "../types/lanyard"
-    import type { SubscriptionData, User } from "../types/lanyard"
-    
-    const element = document.querySelector("#rich-pressence")
-    const socket = new WebSocket("wss://api.lanyard.rest/socket");
-    const DISCORD_ID = "214253471556173824";
-  
-    let user: User = { id: DISCORD_ID };
-  
-    socket.onmessage = (ev: any) => {
-      const json = JSON.parse(ev.data)
-  
-      switch (json.op) {
-        case Opcodes.Hello: {
-          let data: SubscriptionData = { subscribe_to_id: DISCORD_ID };
-  
+<script>
+  import { Opcodes } from "../types/lanyard";
+  import type { SubscriptionData, User } from "../types/lanyard";
+
+  const element = document.querySelector("#rich-pressence");
+  const socket = new WebSocket("wss://api.lanyard.rest/socket");
+  const DISCORD_ID = "214253471556173824";
+
+  let user: User = { id: DISCORD_ID };
+
+  socket.onmessage = (ev: any) => {
+    const json = JSON.parse(ev.data);
+
+    switch (json.op) {
+      case Opcodes.Hello: {
+        let data: SubscriptionData = { subscribe_to_id: DISCORD_ID };
+
+        if (socket.readyState == socket.OPEN)
+          socket.send(JSON.stringify({ op: Opcodes.Initialize, d: data }));
+
+        setInterval(() => {
           if (socket.readyState == socket.OPEN)
-            socket.send(JSON.stringify({ op: Opcodes.Initialize, d: data }));
-  
-          setInterval(() => {
-            if (socket.readyState == socket.OPEN)
-              socket.send(JSON.stringify({ op: Opcodes.Heartbeat }));
-          }, json.d.heartbeat_interval);
-  
-          break;
-        }
-  
-        case Opcodes.Event: {
-          user.data = json.d
-  
-          if(element && user.data) {
-            const mainActivity = user.data.activities.pop()
-            element.innerHTML = mainActivity ? 
+            socket.send(JSON.stringify({ op: Opcodes.Heartbeat }));
+        }, json.d.heartbeat_interval);
+
+        break;
+      }
+
+      case Opcodes.Event: {
+        user.data = json.d;
+
+        if (element && user.data) {
+          const mainActivity = user.data.activities.pop();
+          element.innerHTML = mainActivity
+            ? `
+                <p id="rich-pressence-title" class="text-xs sm:text-sm lg:text-lg">${
+                  mainActivity.name
+                }</p>
+                <p id="rich-pressence-details" class="text-[10px] sm:text-xs lg:text-xs">${
+                  mainActivity.details ?? ""
+                }</p>
               `
-                <p id="rich-pressence-title" class="text-xs sm:text-sm lg:text-lg">${mainActivity.name}</p>
-                <p id="rich-pressence-details" class="text-[10px] sm:text-xs lg:text-xs">${mainActivity.details??""}</p>
-              ` : `
+            : `
                 <p class="text-xs sm:text-sm lg:text-lg">I'm not currently doing anything</p>
-              `
-          }
-          break;
+              `;
         }
+        break;
       }
     }
-  </script>
+  };
+</script>

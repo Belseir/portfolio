@@ -3,8 +3,14 @@ import Kroniicopter from "@components/Kroniicopter.astro";
 ---
 
 <div id="profile-picture" class="relative -mr-4">
-  <img src="/assets/image.webp" alt="Ouro Kronii Picture" height="72" width="72" class="hover:scale-75 rounded-full z-30 relative"/>
-  <Kroniicopter/>
+  <img
+    src="/assets/image.webp"
+    alt="Ouro Kronii Picture"
+    height="72"
+    width="72"
+    class="hover:scale-75 rounded-full z-30 relative"
+  />
+  <Kroniicopter />
 </div>
 
 <style>
@@ -14,8 +20,8 @@ import Kroniicopter from "@components/Kroniicopter.astro";
   }
 </style>
 
-<style is:global>    
-    #profile-picture:hover > #kroniicopter {
-      animation: fade-in 2.5s forwards;
-    }
+<style is:global>
+  #profile-picture:hover > #kroniicopter {
+    animation: fade-in 2.5s forwards;
+  }
 </style>
