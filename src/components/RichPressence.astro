@@ -1,9 +1,47 @@
 
 <div class="mt-8 lg:mt-0 relative translate-x-[30px] lg:translate-x-[0px] flex flex-row items-center">
-    <img src="/assets/image.webp" alt="Ouro Kronii Picture" height="72" width="72" class="rounded-full z-10 relative"/>
+    <div id="profile-picture" class="group overflow-visible relative left-0 ">
+      <img src="/assets/image.webp" alt="Ouro Kronii Picture" height="74" width="74" class="rounded-full z-40 relative"/>
+      <div id="kroniicopter" class="absolute top-1/2 left-1/2 z-30 opacity-0">
+        <div id="kroniicopter-ring" class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[70px] z-20 h-[70px] rounded-full border-4 border-[#CFCFCF]"></div>
+        <div id="kroniicopter-seconds" class="absolute h-[1px] w-[1px] left-1/2 top-1/2">
+          <svg class="top-1/2 -translate-y-full relative left-1/2 -translate-x-1/2" width="2" height="89" viewBox="0 0 2 89" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M1 88L1 1" stroke="url(#paint0_linear_1208_678)" stroke-width="2" stroke-linecap="square"/>
+            <defs>
+            <linearGradient id="paint0_linear_1208_678" x1="1.59929e+11" y1="-7023.92" x2="1.59929e+11" y2="-6902.72" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#D4AF37"/>
+            <stop offset="1" stop-color="#A28834"/>
+            </linearGradient>
+            </defs>
+            </svg>   
+        </div>
+        <div id="kroniicopter-hours" class="absolute h-[1px] w-[1px] left-1/2 top-1/2">
+          <svg class="top-1/2 -translate-y-full relative left-1/2 -translate-x-1/2 " width="14" height="62" viewBox="0 0 14 62" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M1 61L1 14.5M7 61L7 1M13 61L13 20.5M10 61L10 11M4 61L4 6" stroke="url(#paint0_linear_1208_691)" stroke-width="2" stroke-linecap="square"/>
+            <defs>
+            <linearGradient id="paint0_linear_1208_691" x1="7.5" y1="-40" x2="7.5" y2="61.0001" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#CFCFCF"/>
+            <stop offset="1" stop-color="#888888"/>
+            </linearGradient>
+            </defs>
+            </svg>          
+        </div>
+        <div id="kroniicopter-minutes" class="absolute h-[1px] w-[1px] left-1/2 top-1/2">
+          <svg class="top-1/2 -translate-y-full relative left-1/2 -translate-x-1/2" width="8" height="82" viewBox="0 0 8 82" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M1 81V7.5M4 81V1M7 81V15" stroke="url(#paint0_linear_1208_686)" stroke-width="2" stroke-linecap="square"/>
+            <defs>
+            <linearGradient id="paint0_linear_1208_686" x1="4.5" y1="-20" x2="4.5" y2="81" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#CFCFCF"/>
+            <stop offset="1" stop-color="#888888"/>
+            </linearGradient>
+            </defs>
+            </svg>
+        </div>
+      </div>
+    </div>
     <div class="activity flex flex-row">
     <diV class="cut-out"></diV>
-    <div class="relative bg-[#181818] px-6 flex items-center rounded-r-[64px] -left-8 min-w-[300px]">
+    <div class="relative bg-[#181818] px-6 flex items-center rounded-r-[64px] -left-8 min-w-[300px] z-20">
       <div id="rich-pressence" class="flex flex-col">
       </div>
     </div>
@@ -16,14 +54,26 @@
         transition: all 1s ease-in-out;
       }
 
-    img:hover {
-        transform: scale(1.5);
-      }
-      
-      .activity {
-        transform: translateX(-30px);
-        position:relative;
-      }
+    #kroniicopter-hours, #kroniicopter-minutes, #kroniicopter-seconds {
+      transition: all 1s ease;
+    }
+
+    #profile-picture:hover > img {
+      transform: scale(70%);
+    }
+    
+    #profile-picture:hover > #kroniicopter {
+      animation: fade-in 2.5s forwards;
+    }
+
+    @keyframes fade-in {
+      to { opacity: 1; }
+    }
+
+    .activity {
+      transform: translateX(-30px);
+      position:relative;
+    }
 
     .cut-out {
       width: 78px;
@@ -42,6 +92,33 @@
       box-shadow: 0 0 0 300px #181818;
     }
   </style>
+
+  <script>
+    const hoursEl = document.querySelector("#kroniicopter-hours");
+    const minutesEl = document.querySelector("#kroniicopter-minutes");
+    const secondsEl = document.querySelector("#kroniicopter-seconds");
+
+    const numberToDegree = (toConvert: number, proportion: number): number => {
+      return (360 * toConvert) / proportion
+    }
+
+    setInterval(() => {
+      const date = new Date()
+
+      const hours = date.getHours()
+      const minutes = date.getMinutes()
+      const seconds = date.getSeconds()
+
+      const hoursDeg = numberToDegree(hours, 24);
+      const minutesDeg = numberToDegree(minutes, 60);
+      const secondsDeg = numberToDegree(seconds, 60);
+
+      if(hoursEl) hoursEl.setAttribute('style', `transform: rotate(${hoursDeg}deg);`)
+      if(minutesEl) minutesEl.setAttribute('style', `transform: rotate(${minutesDeg}deg);`)
+      if(secondsEl) secondsEl.setAttribute('style', `transform: rotate(${secondsDeg}deg);`)
+
+    }, 1000)
+  </script>
 
   <script>
     import { Opcodes } from "../types/lanyard"
@@ -79,7 +156,7 @@
             element.innerHTML = mainActivity ? 
               `
                 <p id="rich-pressence-title" class="text-sm lg:text-lg">${mainActivity.name}</p>
-                <p id="rich-pressence-details" class="text-xs lg:text-xs">${mainActivity.details}</p>
+                <p id="rich-pressence-details" class="text-xs lg:text-xs">${mainActivity.details??""}</p>
               ` : `
                 <p>I'm not currently doing anything</p>
               `
