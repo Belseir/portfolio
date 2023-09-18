@@ -1,0 +1,21 @@
+---
+import Kroniicopter from "@components/Kroniicopter.astro";
+---
+
+<div id="profile-picture" class="relative -mr-4">
+  <img src="/assets/image.webp" alt="Ouro Kronii Picture" height="72" width="72" class="hover:scale-75 rounded-full z-30 relative"/>
+  <Kroniicopter/>
+</div>
+
+<style>
+  img {
+    box-shadow: 3px 0px 4px 0px rgba(0, 0, 0, 0.25);
+    transition: all 1s ease-in-out;
+  }
+</style>
+
+<style is:global>    
+    #profile-picture:hover > #kroniicopter {
+      animation: fade-in 2.5s forwards;
+    }
+</style>
