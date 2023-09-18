@@ -8,7 +8,7 @@ const { text, color } = Astro.props;
 ---
 
 
-<div class="flex flex-row bg-[#181818] h-[74px] rounded-2xl items-center ">
+<div class="flex flex-row bg-[#181818] h-[74px] transition-all active:translate-y-1 hover:-translate-y-1 rounded-2xl items-center ">
     <div class="h-full w-auto aspect-square rounded-s-2xl flex justify-center items-center" style=`background-color: ${color};`>
         <slot>
     </div>

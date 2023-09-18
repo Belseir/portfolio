@@ -12,7 +12,7 @@ const { name, date, description, language, url, bulletBackground } = Astro.props
 ---
 
 <a href={url} target="_blank">
-    <div class="bg-[#181818] rounded-2xl px-4 py-4 project">
+    <div class="bg-[#181818] rounded-2xl px-4 py-4 transition-all active:translate-y-1 hover:-translate-y-1 project">
         <div class="flex flex-row justify-between items-center">
             <h2 class="text-base font-bold">{name}</h2>
             <p class="text-xs text-[#2F2F2F] hidden xl:block">{date}</p>
