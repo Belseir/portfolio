@@ -1,0 +1,21 @@
+---
+interface Props {
+  ariaLabel: string;
+  href: string;
+}
+
+const { ariaLabel, href } = Astro.props;
+---
+
+<li
+  class="transition-all active:translate-y-1 hover:-translate-y-1 drop-shadow-lg"
+>
+  <a
+    href={href}
+    aria-label={ariaLabel}
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    <slot />
+  </a>
+</li>

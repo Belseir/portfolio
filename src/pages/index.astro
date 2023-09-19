@@ -6,7 +6,7 @@ import ProjectContainer from "@components/ProjectContainer.astro";
 import RichPressence from "@components/RichPressence.astro";
 import SeparatorLine from "@components/SeparatorLine.astro";
 import ProfilePicture from "@components/ProfilePicture.astro";
-import { Steam, Github } from "@components/Icons";
+import Socials from "@components/Socials.astro";
 ---
 
 <Layout title="Fabricio F.">
@@ -21,26 +21,7 @@ import { Steam, Github } from "@components/Icons";
         <ProfilePicture />
         <RichPressence />
       </div>
-      <ul class="flex gap-5">
-        <li class="transition-all active:translate-y-1 hover:-translate-y-1">
-          <a
-            href="https://steamcommunity.com/profiles/76561198206542747"
-            aria-label="Steam"
-            target="_blank"
-          >
-            <Steam />
-          </a>
-        </li>
-        <li class="transition-all active:translate-y-1 hover:-translate-y-1">
-          <a
-            href="https://github.com/Belseir"
-            aria-label="Github"
-            target="_blank"
-          >
-            <Github />
-          </a>
-        </li>
-      </ul>
+      <Socials />
     </section>
   </div>
   <section class="flex flex-col justify-center w-full lg:w-2/4">
