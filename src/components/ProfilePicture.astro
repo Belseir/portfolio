@@ -8,7 +8,7 @@ import Kroniicopter from "@components/Kroniicopter.astro";
     alt="Ouro Kronii Picture"
     height="72"
     width="72"
-    class="hover:scale-75 rounded-full z-30 relative"
+    class="rounded-full z-30 relative"
   />
   <Kroniicopter />
 </div>
@@ -21,7 +21,12 @@ import Kroniicopter from "@components/Kroniicopter.astro";
 </style>
 
 <style is:global>
+  #profile-picture:hover > img {
+    transform: scale(125%);
+  }
   #profile-picture:hover > #kroniicopter {
     animation: fade-in 2.5s forwards;
+    transition: all 1s ease-in-out;
+    transform: scale(175%);
   }
 </style>
