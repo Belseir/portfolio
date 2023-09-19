@@ -7,14 +7,16 @@ interface Props {
 const { text, color } = Astro.props;
 ---
 
-<div
-  class="flex flex-row bg-[#181818] h-[74px] transition-all active:translate-y-1 hover:-translate-y-1 rounded-2xl items-center"
->
+<li>
   <div
-    class="h-full w-auto aspect-square rounded-s-2xl flex justify-center items-center"
-    style=`background-color: ${color};`
+    class="flex flex-row drop-shadow-lg bg-[#181818] h-[74px] transition-all active:translate-y-1 hover:-translate-y-1 rounded-2xl items-center"
   >
-    <slot />
+    <div
+      class="h-full w-auto aspect-square rounded-s-2xl flex justify-center items-center"
+      style=`background-color: ${color};`
+    >
+      <slot />
+    </div>
+    <p class="ml-5">{text}</p>
   </div>
-  <p class="ml-5">{text}</p>
-</div>
+</li>
