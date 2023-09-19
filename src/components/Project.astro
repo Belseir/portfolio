@@ -14,7 +14,7 @@ const { name, date, description, language, url, bulletBackground } =
 
 <a href={url} target="_blank">
   <div
-    class="bg-[#181818] rounded-2xl px-4 py-4 transition-all active:translate-y-1 hover:-translate-y-1 project"
+    class="bg-[#181818] rounded-2xl px-4 py-4 transition-all active:translate-y-1 hover:-translate-y-1 drop-shadow-lg"
   >
     <div class="flex flex-row justify-between items-center">
       <h2 class="text-base font-bold">{name}</h2>
@@ -36,10 +36,6 @@ const { name, date, description, language, url, bulletBackground } =
 </a>
 
 <style>
-  .project {
-    box-shadow: 0px 4px 5px 1px #111;
-  }
-
   .language-bullet {
     position: absolute;
     height: 15px;
