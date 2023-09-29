@@ -22,5 +22,13 @@
     "language": "TypeScript & NextJS",
     "url": "https://github.com/RoundhoundTable/nat20",
     "bulletBackground": "linear-gradient(90deg, rgba(49, 120, 198, 1) 0%, rgba(49, 120, 198, 1) 50%, rgba(0, 0, 0, 1) 50%, rgba(0, 0, 0, 1) 100%)"
+  },
+  {
+    "name": "Holodex-Go",
+    "description": "A Golang client for Holodex API",
+    "date": "24/09/2023",
+    "language": "Golang",
+    "url": "https://github.com/Belseir/holodex-go",
+    "bulletBackground": "linear-gradient(90deg, rgba(8,172,220, 1) 0%, rgba(8,172,220, 1) 100%)"
   }
 ]
